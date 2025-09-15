@@ -7,7 +7,6 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 - 🎨 **Tailwind CSS v4** with CSS-first configuration
 - 🚫 **No Preflight** - preserves existing DNN styles
 - 🏷️ **Namespaced Utilities** - all classes prefixed with `tw:`
-- 📱 **Mobile-First** responsive design
 - 🔧 **Server-Agnostic** - works on any DNN installation
 - 📦 **Template-Ready** - GitHub starter template
 
@@ -77,19 +76,37 @@ Define reusable components in `css/tailwind.css`:
 
 ```css
 @layer components {
+  /* Add your custom components here */
   .btn-primary {
     @apply tw:inline-flex tw:items-center tw:rounded-xl tw:bg-red-700 tw:text-white tw:px-5 tw:py-3;
   }
   .btn-primary:hover {
     @apply tw:bg-red-800;
   }
-  .card {
-    @apply tw:rounded-2xl tw:bg-white tw:shadow tw:ring-1 tw:ring-black/5 tw:p-6;
-  }
 }
 ```
 
 **Note:** For hover states in `@apply`, use separate CSS selectors (not inline `hover:tw:bg-red-800`).
+
+### Typography Plugin Limitation
+
+**Important:** The `@tailwindcss/typography` plugin is not compatible with Tailwind CSS v4 at this time. If you need typography styling, use individual Tailwind classes or create custom components.
+
+For rich text content, you can create custom components using `@apply`:
+
+```css
+@layer components {
+  .content-prose {
+    @apply tw:max-w-none tw:text-gray-700;
+  }
+  .content-prose h1 {
+    @apply tw:font-ubuntu tw:text-4xl tw:font-bold tw:text-gray-900 tw:mb-6 tw:mt-8;
+  }
+  .content-prose p {
+    @apply tw:mb-4 tw:leading-relaxed;
+  }
+}
+```
 
 ## File Structure
 

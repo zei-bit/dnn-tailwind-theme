@@ -8,13 +8,19 @@
     "build": "cross-env NODE_ENV=production postcss css/tailwind.css -o css/skin.min.css --map"
   },
   "devDependencies": {
-    "tailwindcss": ">=4.0.0",
     "@tailwindcss/postcss": ">=4.0.0",
+    "cross-env": ">=7.0.0",
     "postcss": ">=8.4.0",
     "postcss-cli": ">=10.0.0",
-    "cross-env": ">=7.0.0"
+    "tailwindcss": ">=4.0.0"
   },
-  "keywords": ["dnn", "dotnetnuke", "tailwind", "theme", "2sxc"],
+  "keywords": [
+    "dnn",
+    "dotnetnuke",
+    "tailwind",
+    "theme",
+    "2sxc"
+  ],
   "author": "",
   "license": "MIT"
 }

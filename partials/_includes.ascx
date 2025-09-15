@@ -4,6 +4,6 @@
 
 <dnn:DnnJsInclude runat="server" FilePath="js/skin.min.js" Priority="20" PathNameAlias="SkinPath" />
 
-<!-- Light-weight font preloads (only the essentials) -->
-<link rel="preload" href="<%= SkinPath %>fonts/Ubuntu-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-<link rel="preload" href="<%= SkinPath %>fonts/Ubuntu-Bold.woff2"    as="font" type="font/woff2" crossorigin="anonymous" />
+<!-- Font preloads (remove if not using custom fonts) -->
+<!-- <link rel="preload" href="<%= SkinPath %>fonts/Ubuntu-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" /> -->
+<!-- <link rel="preload" href="<%= SkinPath %>fonts/Ubuntu-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" /> -->

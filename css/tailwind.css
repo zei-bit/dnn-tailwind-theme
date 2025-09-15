@@ -10,6 +10,13 @@
 @import "tailwindcss/theme.css" layer(theme) prefix(tw);
 @import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
 
+
+/* Custom font families */
+@theme {
+  --font-ubuntu: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+}
+
 /* 3) Tell Tailwind where to scan for class names (repo-local only) */
 @source "./";
 @source "./**/*.{ascx,aspx,cshtml,razor,html,js}";
@@ -24,17 +31,9 @@
   tw:hidden tw:block tw:flex tw:grid
 ");
 
-/* 5) Your site components using @layer components + @apply */
+/* 5 Your site components using @layer components + @apply */
 @layer components {
-  .btn-primary {
-    @apply tw:inline-flex tw:items-center tw:rounded-xl tw:bg-red-700 tw:text-white tw:px-5 tw:py-3;
-  }
-  .btn-primary:hover {
-    @apply tw:bg-red-800;
-  }
-  .card {
-    @apply tw:rounded-2xl tw:bg-white tw:shadow tw:ring-1 tw:ring-black/5 tw:p-6;
-  }
+  /* Add your custom components here */
 }
 
 /* 6) Fonts (if self-hosting) */
