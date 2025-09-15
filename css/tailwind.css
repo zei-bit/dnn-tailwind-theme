@@ -1,0 +1,58 @@
+/* css/tailwind.css — Tailwind v4, namespace and sources */
+
+/* 1) Declare layers so we can add our own component styles later */
+@layer theme, components, utilities;
+
+/* 2) Import Tailwind pieces, with a namespace prefix:
+      - theme tokens (required)
+      - utilities (required)
+      - omit preflight/components to avoid global resets and defaults  */
+@import "tailwindcss/theme.css" layer(theme) prefix(tw);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
+
+/* 3) Tell Tailwind where to scan for class names (repo-local only) */
+@source "./";
+@source "./**/*.{ascx,aspx,cshtml,razor,html,js}";
+@source "./dev/catalog/**/*.{html,cshtml}";
+@source "./.external/server-views/**/*.{cshtml,razor,html}";
+
+/* 4) Optional: a tiny safelist for predictable dynamic ranges */
+@source inline("
+  md:tw:grid-cols-2
+  md:tw:grid-cols-3
+  lg:tw:grid-cols-3
+  tw:hidden tw:block tw:flex tw:grid
+");
+
+/* 5) Your site components using @layer components + @apply */
+@layer components {
+  .btn-primary {
+    @apply tw:inline-flex tw:items-center tw:rounded-xl tw:bg-red-700 tw:text-white tw:px-5 tw:py-3;
+  }
+  .btn-primary:hover {
+    @apply tw:bg-red-800;
+  }
+  .card {
+    @apply tw:rounded-2xl tw:bg-white tw:shadow tw:ring-1 tw:ring-black/5 tw:p-6;
+  }
+}
+
+/* 6) Fonts (if self-hosting) */
+@font-face {
+  font-family: "Ubuntu";
+  src:
+    url("../fonts/Ubuntu-Regular.woff2") format("woff2"),
+    url("../fonts/Ubuntu-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src:
+    url("../fonts/Ubuntu-Bold.woff2") format("woff2"),
+    url("../fonts/Ubuntu-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
