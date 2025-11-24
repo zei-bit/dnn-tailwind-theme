@@ -6,7 +6,6 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 
 - 🎨 **Tailwind CSS v4** with CSS-first configuration
 - 🚫 **No Preflight** - preserves existing DNN styles
-- 🏷️ **Namespaced Utilities** - all classes prefixed with `tw:`
 - 🔧 **Server-Agnostic** - works on any DNN installation
 - 📦 **Template-Ready** - GitHub starter template
 
@@ -44,9 +43,9 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 This theme uses Tailwind v4's CSS-first approach. Configuration is in `src/skin/css/tailwind.css`:
 
 ```css
-/* Import Tailwind with namespace prefix */
-@import "tailwindcss/theme.css" layer(theme) prefix(tw);
-@import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
+/* Import Tailwind */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 /* Tell Tailwind where to scan for classes */
 @source "../";
@@ -56,18 +55,16 @@ This theme uses Tailwind v4's CSS-first approach. Configuration is in `src/skin/
 
 ### Using Tailwind Classes
 
-All utility classes are prefixed with `tw:`:
-
 ```html
-<div class="tw:flex tw:items-center tw:justify-between">
-  <h1 class="tw:text-2xl tw:font-bold">Welcome</h1>
+<div class="flex items-center justify-between">
+  <h1 class="text-2xl font-bold">Welcome</h1>
   <button class="btn-primary">Get Started</button>
 </div>
 ```
 
 **Hover states** work directly in HTML:
 ```html
-<button class="hover:tw:bg-red-800">Hover me</button>
+<button class="hover:bg-red-800">Hover me</button>
 ```
 
 ### Custom Components
@@ -78,15 +75,15 @@ Define reusable components in `css/tailwind.css`:
 @layer components {
   /* Add your custom components here */
   .btn-primary {
-    @apply tw:inline-flex tw:items-center tw:rounded-xl tw:bg-red-700 tw:text-white tw:px-5 tw:py-3;
+    @apply inline-flex items-center rounded-xl bg-red-700 text-white px-5 py-3;
   }
   .btn-primary:hover {
-    @apply tw:bg-red-800;
+    @apply bg-red-800;
   }
 }
 ```
 
-**Note:** For hover states in `@apply`, use separate CSS selectors (not inline `hover:tw:bg-red-800`).
+**Note:** For hover states in `@apply`, use separate CSS selectors (not inline `hover:bg-red-800`).
 
 ### Typography Plugin Limitation
 
@@ -97,13 +94,13 @@ For rich text content, you can create custom components using `@apply`:
 ```css
 @layer components {
   .content-prose {
-    @apply tw:max-w-none tw:text-gray-700;
+    @apply max-w-none text-gray-700;
   }
   .content-prose h1 {
-    @apply tw:font-ubuntu tw:text-4xl tw:font-bold tw:text-gray-900 tw:mb-6 tw:mt-8;
+    @apply font-ubuntu text-4xl font-bold text-gray-900 mb-6 mt-8;
   }
   .content-prose p {
-    @apply tw:mb-4 tw:leading-relaxed;
+    @apply mb-4 leading-relaxed;
   }
 }
 ```
@@ -113,7 +110,7 @@ For rich text content, you can create custom components using `@apply`:
 ```
 ├── src/
 │   ├── skin/                 # DNN-facing skin assets
-│   │   ├── css/tailwind.css  # Tailwind v4 entry (namespaced utilities)
+│   │   ├── css/tailwind.css  # Tailwind v4 entry
 │   │   ├── partials/         # ASCX includes (header/footer/includes/registers)
 │   │   ├── menus/            # DDRMenu templates
 │   │   ├── fonts/            # Self-hosted fonts
@@ -159,8 +156,8 @@ npm run dev:poll
 
 ### Missing Classes
 If Tailwind purges classes you're using:
-1. Add them to `dev/catalog/` files
-2. Use the `@source inline()` directive in `css/tailwind.css`
+1. Add them to `src/patterns/catalog/` files
+2. Use the `@source inline()` directive in `src/skin/css/tailwind.css`
 3. Check that your files are included in the `@source` patterns
 
 ### Build Errors

@@ -3,12 +3,12 @@
 /* 1) Declare layers so we can add our own component styles later */
 @layer theme, components, utilities;
 
-/* 2) Import Tailwind pieces, with a namespace prefix:
+/* 2) Import Tailwind pieces (no prefix):
       - theme tokens (required)
       - utilities (required)
       - omit preflight/components to avoid global resets and defaults  */
-@import "tailwindcss/theme.css" layer(theme) prefix(tw);
-@import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 
 /* Custom font families */
@@ -24,10 +24,10 @@
 
 /* 4) Optional: a tiny safelist for predictable dynamic ranges */
 @source inline("
-  md:tw:grid-cols-2
-  md:tw:grid-cols-3
-  lg:tw:grid-cols-3
-  tw:hidden tw:block tw:flex tw:grid
+  md:grid-cols-2
+  md:grid-cols-3
+  lg:grid-cols-3
+  hidden block flex grid
 ");
 
 /* 5 Your site components using @layer components + @apply */

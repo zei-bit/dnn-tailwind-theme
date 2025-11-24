@@ -1,7 +1,7 @@
 <!--#include file="partials/_registers.ascx" -->
 <!--#include file="partials/_includes.ascx" -->
 
-<div class="tw:min-h-screen">
+<div class="min-h-screen">
   <!-- Header/NavBar -->
   <!--#include file="partials/_header.ascx" -->
   
