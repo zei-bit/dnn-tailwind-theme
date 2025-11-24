@@ -1,6 +1,6 @@
 # DNN Tailwind Theme
 
-A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designed for seamless integration with 2sxc content management.
+A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and a clean CSS-first workflow.
 
 ## Features
 
@@ -15,7 +15,6 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 - **Node.js** LTS (v18 or higher)
 - **npm** (comes with Node.js)
 - **DotNetNuke** installation
-- **2sxc** module (optional, for content management)
 
 ## Quick Start
 
@@ -213,4 +212,3 @@ MIT License - see LICENSE file for details.
 - **Issues**: GitHub Issues
 - **Documentation**: [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
 - **DNN**: [DotNetNuke Documentation](https://www.dnnsoftware.com/docs)
-- **2sxc**: [2sxc Documentation](https://docs.2sxc.org/)
