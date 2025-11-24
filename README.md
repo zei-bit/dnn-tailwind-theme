@@ -44,6 +44,11 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and a clean
 - `npm run build` - Build production CSS
 - `npm run patterns` - Compile pattern pages by resolving `<!-- @include ... -->` into `public/pages/`
 
+### Starter demo
+
+- Pages live in `src/patterns/pages/`, partials in `src/patterns/partials/`.
+- Run `npm run patterns` to output to `public/pages/`, then serve `public/` (e.g., with Five Server). Open `public/pages/example.html` to see the starter UI.
+
 ### CSS-First Configuration
 
 This theme uses Tailwind v4's CSS-first approach. Configuration is in `src/skin/css/tailwind.css`:
@@ -131,69 +136,20 @@ For rich text content, you can create custom components using `@apply`:
 └── package.json
 ```
 
-## Living Styleguide
+## Patterns and includes
 
-The `src/patterns/` folder contains sample components that help Tailwind's JIT compiler recognize all your classes. Keep this updated with finished sections:
+- `src/patterns/catalog/` — Examples to keep Tailwind JIT warm (add sections as you build UI).
+- `src/patterns/pages/` — Pages that can include partials via `<!-- @include ../partials/navbar.html -->`.
+- `src/patterns/partials/` — Reusable HTML fragments.
+- Run `npm run patterns` to render into `public/pages/`, then serve `public/` to preview.
 
-- `catalog/hero.html` - Hero sections and banners
-- Add more catalog pages as you build new UI sections (forms, navigation, etc.)
+## Deployment (summary)
 
-### Pattern builder (includes)
+1. Sync `src/skin/` to `dist/ThemeSkin/` (copy/rsync).
+2. Run `npm run build` to produce `dist/ThemeSkin/css/skin.min.css`.
+3. Copy `dist/ThemeSkin/` to your DNN Skins folder and clear cache.
 
-- Author pages in `src/patterns/pages/` and partials in `src/patterns/partials/`.
-- Use include markers in pages: `<!-- @include ../partials/navbar.html -->`.
-- Run `npm run patterns` to write composed HTML to `public/pages/`, then serve `public/` with your static server (e.g., Five Server). A starter demo is provided at `public/pages/example.html`.
-
-## Deployment
-
-1. **Sync skin assets to dist**:
-   ```bash
-   rsync -av src/skin/ dist/ThemeSkin/ --delete
-   ```
-2. **Build production CSS into dist**:
-   ```bash
-   npm run build
-   ```
-3. **Copy `dist/ThemeSkin/`** to your DNN installation (e.g., `/Portals/_default/Skins/YourThemeName/`)
-4. **Clear DNN cache** (Admin → Host → Clear Cache)
-5. **Apply the theme** in Site Settings
-
-## Troubleshooting
-
-### File Watching Issues
-If you're developing over SMB/NAS and file watching is unreliable:
-```bash
-npm run dev:poll
-```
-
-### Missing Classes
-If Tailwind purges classes you're using:
-1. Add them to `src/patterns/catalog/` files
-2. Use the `@source inline()` directive in `src/skin/css/tailwind.css`
-3. Check that your files are included in the `@source` patterns
-
-### Build Errors
-- Ensure Node.js LTS is installed
-- Run `npm ci` to install exact dependency versions
-- Check that `postcss.config.js` is present
-
-## Customization
-
-### Colors and Theme
-Modify the theme tokens in `css/tailwind.css`:
-
-```css
-@theme {
-  --color-primary: #dc2626; /* red-600 */
-  --color-secondary: #059669; /* emerald-600 */
-}
-```
-
-### Fonts
-Update the `@font-face` declarations in `css/tailwind.css` and modify the font family in your components.
-
-### Responsive Breakpoints
-Tailwind's default breakpoints work well, but you can customize them in the CSS configuration.
+For details and customization (fonts, colors, troubleshooting), see `docs/`.
 
 ## Contributing
 
@@ -209,6 +165,4 @@ MIT License - see LICENSE file for details.
 
 ## Support
 
-- **Issues**: GitHub Issues
-- **Documentation**: [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
-- **DNN**: [DotNetNuke Documentation](https://www.dnnsoftware.com/docs)
+- **Documentation**: [Tailwind CSS v4 Docs](https://tailwindcss.com/docs), `docs/` in this repo
