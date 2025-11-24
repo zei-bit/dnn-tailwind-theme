@@ -6,6 +6,7 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 
 - 🎨 **Tailwind CSS v4** with CSS-first configuration
 - 🚫 **No Preflight** - preserves existing DNN styles
+- 🅰️ **Bundled Ubuntu font** (self-hosted, OFL)
 - 🔧 **Server-Agnostic** - works on any DNN installation
 - 📦 **Template-Ready** - GitHub starter template
 
@@ -27,8 +28,13 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
    ```bash
    npm run dev
    ```
-4. **Copy `src/skin/` into `dist/ThemeSkin/` and build CSS** (see Deployment below)
-5. **Apply the theme** in DNN Admin → Site Settings → Appearance
+4. **Optional: build the pattern demo** (for a starter page preview)
+   ```bash
+   npm run patterns
+   ```
+   Open `public/pages/example.html` (serve `public/` with your static server for best results).
+5. **Copy `src/skin/` into `dist/ThemeSkin/` and build CSS** (see Deployment below)
+6. **Apply the theme** in DNN Admin → Site Settings → Appearance
 
 ## Development Workflow
 
@@ -137,7 +143,7 @@ The `src/patterns/` folder contains sample components that help Tailwind's JIT c
 
 - Author pages in `src/patterns/pages/` and partials in `src/patterns/partials/`.
 - Use include markers in pages: `<!-- @include ../partials/navbar.html -->`.
-- Run `npm run patterns` to write composed HTML to `public/pages/`, then serve `public/` with your static server (e.g., Five Server).
+- Run `npm run patterns` to write composed HTML to `public/pages/`, then serve `public/` with your static server (e.g., Five Server). A starter demo is provided at `public/pages/example.html`.
 
 ## Deployment
 
