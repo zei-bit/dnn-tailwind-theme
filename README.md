@@ -28,7 +28,7 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
    ```bash
    npm run dev
    ```
-4. **Copy the skin folder** to your DNN installation
+4. **Copy `src/skin/` into `dist/ThemeSkin/` and build CSS** (see Deployment below)
 5. **Apply the theme** in DNN Admin → Site Settings → Appearance
 
 ## Development Workflow
@@ -41,7 +41,7 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 
 ### CSS-First Configuration
 
-This theme uses Tailwind v4's CSS-first approach. Configuration is in `css/tailwind.css`:
+This theme uses Tailwind v4's CSS-first approach. Configuration is in `src/skin/css/tailwind.css`:
 
 ```css
 /* Import Tailwind with namespace prefix */
@@ -49,9 +49,9 @@ This theme uses Tailwind v4's CSS-first approach. Configuration is in `css/tailw
 @import "tailwindcss/utilities.css" layer(utilities) prefix(tw);
 
 /* Tell Tailwind where to scan for classes */
-@source "./";
-@source "./**/*.{ascx,aspx,cshtml,razor,html,js}";
-@source "./dev/catalog/**/*.{html,cshtml}";
+@source "../";
+@source "../**/*.{ascx,aspx,cshtml,razor,html,js}";
+@source "../../patterns/**/*.{html,js,cshtml}";
 ```
 
 ### Using Tailwind Classes
@@ -111,45 +111,43 @@ For rich text content, you can create custom components using `@apply`:
 ## File Structure
 
 ```
-├── css/
-│   ├── tailwind.css          # Source CSS with Tailwind v4 config
-│   └── skin.min.css          # Compiled output (gitignored)
-├── js/
-│   └── skin.min.js           # Optional JavaScript bundle
-├── partials/
-│   ├── _includes.ascx        # CSS/JS includes
-│   ├── _registers.ascx       # DNN control registrations
-│   ├── _header.ascx          # Header partial
-│   └── _footer.ascx           # Footer partial
-├── dev/
-│   └── catalog/              # Living styleguide
-│       └── hero.html          # Sample components
-├── menus/                     # Menu templates
-├── fonts/                     # Self-hosted fonts
-├── images/                    # Theme images
-├── default.ascx              # Main skin file
-├── popUpSkin.ascx            # Popup skin
-└── skin.doctype.xml          # DNN skin definition
+├── src/
+│   ├── skin/                 # DNN-facing skin assets
+│   │   ├── css/tailwind.css  # Tailwind v4 entry (namespaced utilities)
+│   │   ├── partials/         # ASCX includes (header/footer/includes/registers)
+│   │   ├── menus/            # DDRMenu templates
+│   │   ├── fonts/            # Self-hosted fonts
+│   │   ├── default.ascx      # Main skin file
+│   │   ├── popUpSkin.ascx    # Popup skin
+│   │   └── skin.doctype.xml  # DNN skin definition
+│   └── patterns/             # Pattern library & sandbox (HTML prototypes)
+│       ├── catalog/          # Living styleguide examples (e.g., hero.html)
+│       └── sandbox/          # Misc. experiments (e.g., playground.html)
+├── dist/ThemeSkin/           # Deployable package (copy of src/skin + built CSS)
+├── docs/                     # Project notes and structure docs
+└── package.json
 ```
 
 ## Living Styleguide
 
-The `dev/catalog/` folder contains sample components that help Tailwind's JIT compiler recognize all your classes. Keep this updated with finished sections:
+The `src/patterns/` folder contains sample components that help Tailwind's JIT compiler recognize all your classes. Keep this updated with finished sections:
 
-- `hero.html` - Hero sections and banners
-- `features.html` - Feature grids and cards
-- `navigation.html` - Menu and navigation patterns
-- `forms.html` - Form layouts and inputs
+- `catalog/hero.html` - Hero sections and banners
+- Add more catalog pages as you build new UI sections (forms, navigation, etc.)
 
 ## Deployment
 
-1. **Build production CSS**:
+1. **Sync skin assets to dist**:
+   ```bash
+   rsync -av src/skin/ dist/ThemeSkin/ --delete
+   ```
+2. **Build production CSS into dist**:
    ```bash
    npm run build
    ```
-2. **Copy the entire skin folder** to your DNN installation
-3. **Clear DNN cache** (Admin → Host → Clear Cache)
-4. **Apply the theme** in Site Settings
+3. **Copy `dist/ThemeSkin/`** to your DNN installation (e.g., `/Portals/_default/Skins/YourThemeName/`)
+4. **Clear DNN cache** (Admin → Host → Clear Cache)
+5. **Apply the theme** in Site Settings
 
 ## Troubleshooting
 

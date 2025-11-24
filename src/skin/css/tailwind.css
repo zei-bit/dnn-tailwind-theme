@@ -17,11 +17,10 @@
   --font-display: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* 3) Tell Tailwind where to scan for class names (repo-local only) */
-@source "./";
-@source "./**/*.{ascx,aspx,cshtml,razor,html,js}";
-@source "./dev/catalog/**/*.{html,cshtml}";
-@source "./.external/server-views/**/*.{cshtml,razor,html}";
+/* 3) Tell Tailwind where to scan for class names (source + patterns) */
+@source "../";
+@source "../**/*.{ascx,aspx,cshtml,razor,html,js}";
+@source "../../patterns/**/*.{html,js,cshtml}";
 
 /* 4) Optional: a tiny safelist for predictable dynamic ranges */
 @source inline("
