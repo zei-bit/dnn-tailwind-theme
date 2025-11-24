@@ -24,4 +24,4 @@ Source/patterns vs. dist layout for this Tailwind v4 DNN skin.
 
 - Author pattern pages in `src/patterns/pages/` and partials in `src/patterns/partials/`.
 - Use include markers: `<!-- @include ../partials/navbar.html -->`.
-- Run `npm run patterns` to render includes into `public/pages/`, then serve `public/` with your static server for previews.
+- Run `npm run patterns` (or `npm run patterns:watch`) to render includes into `public/pages/`, then serve `public/` with your static server (or `npm run serve:patterns`) for previews.

@@ -7,6 +7,7 @@ const path = require("path");
 
 const ROOT = process.cwd();
 const SRC_PAGES = path.join(ROOT, "src/patterns/pages");
+const SRC_PARTIALS = path.join(ROOT, "src/patterns/partials");
 const OUT_PAGES = path.join(ROOT, "public/pages");
 
 const INCLUDE_RE = /<!--\s*@include\s+(.+?)\s*-->/g;
@@ -43,4 +44,34 @@ function walk(dir) {
   }
 }
 
-walk(SRC_PAGES);
+function buildAll() {
+  walk(SRC_PAGES);
+}
+
+function watch() {
+  const debounce = (fn, delay = 150) => {
+    let t;
+    return () => {
+      clearTimeout(t);
+      t = setTimeout(fn, delay);
+    };
+  };
+  const onChange = debounce(() => {
+    try {
+      buildAll();
+    } catch (e) {
+      console.error(e.message);
+    }
+  });
+  const watchDirs = [SRC_PAGES, SRC_PARTIALS];
+  watchDirs.forEach((dir) => {
+    fs.watch(dir, { recursive: true }, onChange);
+  });
+  console.log("Watching pattern pages/partials for changes...");
+}
+
+const args = process.argv.slice(2);
+buildAll();
+if (args.includes("--watch")) {
+  watch();
+}

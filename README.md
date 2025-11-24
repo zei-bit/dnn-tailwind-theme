@@ -43,6 +43,8 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and a clean
 - `npm run dev:poll` - Use polling for SMB/NAS file systems
 - `npm run build` - Build production CSS
 - `npm run patterns` - Compile pattern pages by resolving `<!-- @include ... -->` into `public/pages/`
+- `npm run patterns:watch` - Rebuild pattern pages on change
+- `npm run serve:patterns` - Serve `public/` at http://localhost:4173 for preview
 
 ### Starter demo
 
@@ -141,7 +143,7 @@ For rich text content, you can create custom components using `@apply`:
 - `src/patterns/catalog/` — Examples to keep Tailwind JIT warm (add sections as you build UI).
 - `src/patterns/pages/` — Pages that can include partials via `<!-- @include ../partials/navbar.html -->`.
 - `src/patterns/partials/` — Reusable HTML fragments.
-- Run `npm run patterns` to render into `public/pages/`, then serve `public/` to preview.
+- Run `npm run patterns` (or `npm run patterns:watch`) to render into `public/pages/`, then serve `public/` (`npm run serve:patterns`) to preview.
 
 ## Deployment (summary)
 

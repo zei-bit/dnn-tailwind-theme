@@ -6,7 +6,9 @@
     "dev": "postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --watch --map",
     "dev:poll": "cross-env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=250 postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --watch --map",
     "build": "cross-env NODE_ENV=production postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --map",
-    "patterns": "node scripts/build-patterns.js"
+    "patterns": "node scripts/build-patterns.js",
+    "patterns:watch": "node scripts/build-patterns.js --watch",
+    "serve:patterns": "node scripts/serve-public.js"
   },
   "devDependencies": {
     "@tailwindcss/postcss": ">=4.0.0",
