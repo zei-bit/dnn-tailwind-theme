@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "DNN theme with Tailwind CSS v4",
   "scripts": {
-    "dev": "postcss css/tailwind.css -o css/skin.min.css --watch --map",
-    "dev:poll": "cross-env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=250 postcss css/tailwind.css -o css/skin.min.css --watch --map",
-    "build": "cross-env NODE_ENV=production postcss css/tailwind.css -o css/skin.min.css --map"
+    "dev": "postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --watch --map",
+    "dev:poll": "cross-env CHOKIDAR_USEPOLLING=1 CHOKIDAR_INTERVAL=250 postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --watch --map",
+    "build": "cross-env NODE_ENV=production postcss src/skin/css/tailwind.css -o dist/ThemeSkin/css/skin.min.css --map",
+    "patterns": "node scripts/build-patterns.js"
   },
   "devDependencies": {
     "@tailwindcss/postcss": ">=4.0.0",

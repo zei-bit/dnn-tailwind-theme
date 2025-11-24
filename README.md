@@ -37,6 +37,7 @@ A modern, responsive DotNetNuke theme built with **Tailwind CSS v4** and designe
 - `npm run dev` - Start development with file watching
 - `npm run dev:poll` - Use polling for SMB/NAS file systems
 - `npm run build` - Build production CSS
+- `npm run patterns` - Compile pattern pages by resolving `<!-- @include ... -->` into `public/pages/`
 
 ### CSS-First Configuration
 
@@ -131,6 +132,12 @@ The `src/patterns/` folder contains sample components that help Tailwind's JIT c
 
 - `catalog/hero.html` - Hero sections and banners
 - Add more catalog pages as you build new UI sections (forms, navigation, etc.)
+
+### Pattern builder (includes)
+
+- Author pages in `src/patterns/pages/` and partials in `src/patterns/partials/`.
+- Use include markers in pages: `<!-- @include ../partials/navbar.html -->`.
+- Run `npm run patterns` to write composed HTML to `public/pages/`, then serve `public/` with your static server (e.g., Five Server).
 
 ## Deployment
 

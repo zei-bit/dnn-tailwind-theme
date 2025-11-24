@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patterns Include Demo</title>
+    <!-- Link to your compiled CSS (build to dist/ThemeSkin first) -->
+    <link rel="stylesheet" href="../../dist/ThemeSkin/css/skin.min.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <!-- Simple navbar partial with inline script -->
+<header class="bg-slate-900 text-white">
+  <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="inline-block h-8 w-8 rounded-full bg-white/10"></span>
+      Tailwind Theme
+    </a>
+    <nav class="hidden sm:flex gap-4 text-sm">
+      <a href="#" class="hover:text-sky-200">Home</a>
+      <a href="#" class="hover:text-sky-200">Catalog</a>
+      <a href="#" class="hover:text-sky-200">Contact</a>
+    </nav>
+    <button id="nav-cta" class="rounded-lg bg-sky-500 px-3 py-2 text-sm font-semibold hover:bg-sky-400">
+      Get updates
+    </button>
+  </div>
+</header>
+<script>
+  // Inline script stays intact after build; attach a simple click handler.
+  const btn = document.getElementById("nav-cta");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      alert("Thanks for trying the include builder!");
+    });
+  }
+</script>
+
+
+    <main class="mx-auto max-w-5xl px-4 py-12 space-y-8">
+      <header class="space-y-2">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Pattern library</p>
+        <h1 class="text-3xl font-bold">Static include demo</h1>
+        <p class="text-slate-600">Update a partial once; rebuild to refresh all pages.</p>
+      </header>
+
+      <section class="grid gap-6 md:grid-cols-3">
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Navbar partial</h2>
+          <p class="text-sm text-slate-600 mb-3">Includes inline JS that triggers an alert on the CTA button.</p>
+          <p class="text-sm text-slate-600">Edit <code>src/patterns/partials/navbar.html</code> and run <code>npm run patterns</code>.</p>
+        </article>
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Footer partial</h2>
+          <p class="text-sm text-slate-600 mb-3">Inline script writes the current year.</p>
+          <p class="text-sm text-slate-600">Partial lives at <code>src/patterns/partials/footer.html</code>.</p>
+        </article>
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Build step</h2>
+          <p class="text-sm text-slate-600 mb-3">The Node script replaces <code>@include</code> markers and writes to <code>public/pages/</code>.</p>
+          <p class="text-sm text-slate-600">Serve <code>public/</code> with Five Server for previews.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="bg-slate-100 text-slate-700">
+  <div class="mx-auto max-w-5xl px-4 py-6 flex flex-col gap-2 text-sm">
+    <div class="flex items-center gap-2">
+      <span class="inline-block h-8 w-8 rounded-full bg-slate-300"></span>
+      <span class="font-semibold text-slate-900">Tailwind Theme</span>
+    </div>
+    <p class="m-0">Reusable partials compiled at build time.</p>
+    <p class="m-0" id="year-line"></p>
+  </div>
+</footer>
+<script>
+  // Populate the year to demonstrate inline script execution.
+  const yearEl = document.getElementById("year-line");
+  if (yearEl) {
+    yearEl.textContent = `© ${new Date().getFullYear()} Example footer injected via @include`;
+  }
+</script>
+
+  </body>
+</html>

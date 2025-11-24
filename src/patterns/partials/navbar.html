@@ -1,0 +1,26 @@
+<!-- Simple navbar partial with inline script -->
+<header class="bg-slate-900 text-white">
+  <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between gap-4">
+    <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="inline-block h-8 w-8 rounded-full bg-white/10"></span>
+      Tailwind Theme
+    </a>
+    <nav class="hidden sm:flex gap-4 text-sm">
+      <a href="#" class="hover:text-sky-200">Home</a>
+      <a href="#" class="hover:text-sky-200">Catalog</a>
+      <a href="#" class="hover:text-sky-200">Contact</a>
+    </nav>
+    <button id="nav-cta" class="rounded-lg bg-sky-500 px-3 py-2 text-sm font-semibold hover:bg-sky-400">
+      Get updates
+    </button>
+  </div>
+</header>
+<script>
+  // Inline script stays intact after build; attach a simple click handler.
+  const btn = document.getElementById("nav-cta");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      alert("Thanks for trying the include builder!");
+    });
+  }
+</script>

@@ -19,3 +19,9 @@ Source/patterns vs. dist layout for this Tailwind v4 DNN skin.
    # (optional) remove tailwind source if you don't want to ship it
    ```
 4. Zip `dist/ThemeSkin/` or copy it into your DNN site’s `/Portals/_default/Skins/YourThemeName/`.
+
+## Pattern pages builder (optional)
+
+- Author pattern pages in `src/patterns/pages/` and partials in `src/patterns/partials/`.
+- Use include markers: `<!-- @include ../partials/navbar.html -->`.
+- Run `npm run patterns` to render includes into `public/pages/`, then serve `public/` with your static server for previews.

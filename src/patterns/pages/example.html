@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patterns Include Demo</title>
+    <!-- Link to your compiled CSS (build to dist/ThemeSkin first) -->
+    <link rel="stylesheet" href="../../dist/ThemeSkin/css/skin.min.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <!-- @include ../partials/navbar.html -->
+
+    <main class="mx-auto max-w-5xl px-4 py-12 space-y-8">
+      <header class="space-y-2">
+        <p class="text-xs uppercase tracking-wide text-slate-500">Pattern library</p>
+        <h1 class="text-3xl font-bold">Static include demo</h1>
+        <p class="text-slate-600">Update a partial once; rebuild to refresh all pages.</p>
+      </header>
+
+      <section class="grid gap-6 md:grid-cols-3">
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Navbar partial</h2>
+          <p class="text-sm text-slate-600 mb-3">Includes inline JS that triggers an alert on the CTA button.</p>
+          <p class="text-sm text-slate-600">Edit <code>src/patterns/partials/navbar.html</code> and run <code>npm run patterns</code>.</p>
+        </article>
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Footer partial</h2>
+          <p class="text-sm text-slate-600 mb-3">Inline script writes the current year.</p>
+          <p class="text-sm text-slate-600">Partial lives at <code>src/patterns/partials/footer.html</code>.</p>
+        </article>
+        <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <h2 class="text-lg font-semibold mb-2">Build step</h2>
+          <p class="text-sm text-slate-600 mb-3">The Node script replaces <code>@include</code> markers and writes to <code>public/pages/</code>.</p>
+          <p class="text-sm text-slate-600">Serve <code>public/</code> with Five Server for previews.</p>
+        </article>
+      </section>
+    </main>
+
+    <!-- @include ../partials/footer.html -->
+  </body>
+</html>
